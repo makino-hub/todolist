@@ -1,0 +1,423 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul,li{
+    list-style: none;
+}
+
+.main_body{
+    background-color: rgb(3, 149, 194);
+}
+
+.wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+  }
+  .main_fild{
+    padding:1em;
+    background-color: white;
+    width: 100%;
+    height: 700px;
+  }
+
+  .title{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+  }
+
+  .input_text_area{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 50px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .input_text{
+    padding: 5px;
+    width: 90%;
+  }
+  .input_text::placeholder{
+    color: rgba(0, 0, 0, 0.418);
+  }
+
+  .input_text_null{
+    padding: 5px;
+    width: 90%;
+  }
+
+  .input_text_null::placeholder{
+    color: rgba(255, 0, 0, 0.842);
+  }
+
+  #add_button{
+    height: 50px;
+    width: 50px;
+    background-color: rgb(3, 149, 194);
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dli-plus {
+    display: inline-block;
+    vertical-align: middle;
+    color:white;
+    line-height: 1;
+    width: 1.5em;
+    height: 0.2em;
+    background: currentColor;
+    border-radius: 0.1em;
+    position: relative;
+  }
+  
+  .dli-plus::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: inherit;
+    transform: rotate(90deg);
+  }
+
+  .list_area{
+    margin-top: 20px;
+    height: 400px;
+    overflow: auto;
+    margin-bottom: 20px;
+  }
+/* リストのスタイル */
+  .list{
+    padding: 0 10px;
+    width: 80%;
+    min-height: 50px;
+    background-color: rgba(0, 255, 255, 0.603);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .display_text{
+    margin-left: 10px;
+    min-height: 30px;
+    width: 80%;
+    background-color: white;
+    padding: 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  /* 編集ロゴの作成 */
+  .edit_logo{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    position: relative;
+  }
+
+  .edit.icon {
+    color: #000;
+    position: absolute;
+    width: 14px;
+    height: 3px;
+    border-radius: 1px;
+    border: solid 1px currentColor;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+
+  .edit.icon:before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: -1px;
+    width: 0px;
+    height: 0px;
+    border-left: solid 5px transparent;
+    border-right: solid 5px currentColor;
+    border-top: solid 2px transparent;
+    border-bottom: solid 2px transparent;
+  }
+    /* /編集ロゴの作成 */
+  .edit_text{
+    margin-left: 10px;
+    height: 30px;
+    width: 80%;
+    background-color: white;
+    padding: 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border: 2px red solid;
+    outline: none;
+  }
+
+  .edit_text:focus{
+    margin-left: 10px;
+    height: 30px;
+    width: 80%;
+    background-color: white;
+    padding: 5px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border: 2px red solid;
+  }
+
+
+
+/* 消去ロゴの作成 */
+.delete_logo{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+  .close.icon {
+    color: #000;
+    position: absolute;
+    margin-top: 0;
+    margin-left: 0;
+    width: 21px;
+    height: 21px;
+  }
+  .close.icon:before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 21px;
+    height: 3px;
+    background-color: currentColor;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  .close.icon:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 21px;
+    height: 3px;
+    background-color: currentColor;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  /* 消去ロゴの作成 */
+
+  .footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  /* タスク完了のパーセンテージ */
+
+  .percent_gauge_area{
+    position: relative;
+    height: 40px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid black;
+    /* background-color: chartreuse; */
+  }
+
+  #percent_color{
+    position: absolute;
+    background-color: rgba(54, 253, 4, 0.76);
+    height: 100%;
+    width: 0%;
+    left: 0;
+  }
+
+  #percent_gauge{
+    z-index: 999;
+  }
+  /* /タスク完了のパーセンテージ */
+
+
+  /* チェック済みを消去 */
+  .remove_text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #remove_checked_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(3, 149, 194);
+    min-width: 160px;
+    color: white;
+    padding: 5px;
+  }
+
+  .remove_close_icon{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+  }
+
+
+  @media screen and (max-width: 1030px) {
+    /*（ipad pro用） */
+    .main_fild {
+      height: 90%;
+  }
+    .list_area {
+      margin-top: 20px;
+      height: 600px;
+      overflow: auto;
+      margin-bottom: 20px;
+  }
+  .footer{
+    display: flex;
+    height: 200px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .percent_gauge_area {
+    width: 80%;
+    height: 50px;
+  }
+
+  #remove_checked_button {
+      min-width: 60%;
+      height: 50px;
+  }
+
+}
+  @media screen and (max-width: 959px) {
+    /* 959px以下に適用されるCSS（タブレット用） */
+    .main_fild {
+      width: 100%;
+      height: 90%;
+    }
+  .list_area {
+     margin-top: 20px;
+     height: 300px;
+     overflow: auto;
+     margin-bottom: 20px;
+    }
+
+}
+ 
+@media screen and (max-width: 600px) {
+  /* 600px以下に適用されるCSS（スマホ用） */
+  .list_area {
+    height: 300px;
+  }
+  .footer {
+    height: 120px;
+  }
+
+}
+
+  @media screen and (max-width: 480px) {
+    /* 480px以下に適用されるCSS（スマホ用） */
+    .input_text_area {
+      width: 90%;
+    }
+
+    .list{
+      width: 100%;
+    }
+
+    .display_text {
+      font-size: 10px;
+  }
+
+  .list_area {
+    height: 350px;
+  }
+
+  .footer{
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #remove_checked_button{
+    width: 250px;
+    justify-content: space-evenly;
+  }
+
+  .remove_text{
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  /*420px以下に適用されるCSS（スマホ用） */
+  .percent_gauge_area {
+    height: 40px;
+  }   
+  .list_area {
+    height: 300px;
+  }
+  .footer {
+    height: 120px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  /* 375px以下に適用されるCSS（スマホ用） */
+  .title{
+    font-size: 30px;
+  }
+
+  .list_area {
+    height: 260px;
+  }
+
+ .main_fild {
+   height: 90%;
+  }
+ .input_text_area {
+   width: 100%;
+  }
+  .percent_gauge_area {
+    width: 80%;
+    height: 40px;
+  }
+  .footer{
+    display: flex;
+    height: 120px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+}
+  
