@@ -49,6 +49,23 @@ let elemDiv_4;
 let elemDiv_5;
 let elemInput;
 
+//作成したい要素構造
+{/* 
+<li class = 'oneline'>
+    <div class = 'list'>
+        <input type = 'checkbox' name = 'checkname' class='checkboxs' >
+        <div class = 'display_text'></div>
+        <div class = 'edit_logo'>
+            <div class='edit icon'></div>
+        </div>
+        <div class = 'delete_logo'>
+            <div class='close icon'></div>
+        </div>
+    </div>
+</li> 
+
+*/}
+
 
 function createList(getText){
     elemLi = createElm('li');//listの作成
@@ -57,7 +74,6 @@ function createList(getText){
     mainDiv = createElm('div');//divの作成
     elemLi.appendChild(mainDiv);//liの中にdiv要素を生成
     addClass(mainDiv,'list' );
-    // mainDiv.classList.add('list');//list Classの追加
     //チェックボックスを作成
     elemInput = createElm('input');
     mainDiv.appendChild(elemInput);
@@ -94,8 +110,9 @@ function createList(getText){
     checkedNumber = checkedNumber;
     changeLength(checkedNumber , ListNumber);//ゲージ部分のテキストを変更
     saveDate();
-
 }
+
+
 
 
 
@@ -171,13 +188,11 @@ function mycheck(e){
         checkedNumber += 1;
         ListNumber = ListNumber ;
         changeLength(checkedNumber , ListNumber);
-        // changePercentGauge(checkedNumber);
     }else{
         target.nextElementSibling.style.textDecoration= 'none';
         checkedNumber -= 1;
         ListNumber = ListNumber ;
         changeLength(checkedNumber , ListNumber);
-        // changePercentGauge(checkedNumber);
     }
 };
 
