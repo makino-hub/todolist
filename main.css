@@ -293,13 +293,13 @@ ul,li{
   }
     .list_area {
       margin-top: 20px;
-      height: 600px;
+      height: 240px;
       overflow: auto;
       margin-bottom: 20px;
   }
   .footer{
     display: flex;
-    height: 200px;
+    height: 150px;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
@@ -392,7 +392,7 @@ ul,li{
 }
 
 @media screen and (max-width: 380px) {
-  /* 375px以下に適用されるCSS（スマホ用） */
+  /* 380px以下に適用されるCSS（スマホ用） */
   .title{
     font-size: 30px;
   }
@@ -417,6 +417,47 @@ ul,li{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+  }
+
+}
+
+
+
+@media screen and (max-width: 320px) {
+  /* 320px以下に適用されるCSS（スマホ用） */
+  .list_area {
+    height: 200px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .percent_gauge_area {
+    width: 80%;
+    height: 30px;
+  }
+
+  .remove_text {
+    font-size: 15px;
+  }
+
+  #remove_checked_button {
+    height: 40px;
+  }
+
+  .edit.icon {
+    width: 12px;
+    height: 3px;
+  }
+
+  .input_text_area {
+    height: 40px;
+  }
+
+  #add_button {
+      height: 40px;
+      width: 40px;
   }
 
 }
