@@ -1,3 +1,14 @@
+//要素の作成
+function createElm(getElm){
+   let createElm =  document.createElement(getElm);
+   return createElm;
+}
+
+//要素にクラスを付与する関数
+function addClass(elm,className){
+    elm.classList.add(className);
+}
+
 
 // 文字の入力
 let inputedText = document.getElementById('input_text');
@@ -15,12 +26,12 @@ addBtn.addEventListener('click',function(){
     if(GetText == ''){
         inputedText.placeholder = 'Please enter the characters';
         inputedText.classList.remove('input_text');
-        inputedText.classList.add('input_text_null');
+        inputedText.addClass('input_text_null');
     }else{
         createList(GetText);
         inputedText.placeholder = 'What needs to be done?';
         inputedText.classList.remove('input_text_null');
-        inputedText.classList.add('input_text');
+        inputedText.addClass('input_text');
     }
 });
 
@@ -29,6 +40,7 @@ addBtn.addEventListener('click',function(){
 
 // add button 要素を作って、入力したテキストをリストで出力
 let elemLi;
+let mainDiv;
 let ListNumber = 0 ; //要素の数
 let elemDiv_1;
 let elemDiv_2;
@@ -39,44 +51,45 @@ let elemInput;
 
 
 function createList(getText){
-    elemLi = document.createElement('li');//listの作成
+    elemLi = createElm('li');//listの作成
     listUl.appendChild(elemLi);//ulにli要素の追加
-    elemLi.classList.add('oneLine');
-    let mainDiv = document.createElement('div');//divの作成
+    addClass(elemLi,'oneLine');
+    mainDiv = createElm('div');//divの作成
     elemLi.appendChild(mainDiv);//liの中にdiv要素を生成
-    mainDiv.classList.add('list');//list Classの追加
+    addClass(mainDiv,'list' );
+    // mainDiv.classList.add('list');//list Classの追加
     //チェックボックスを作成
-    elemInput = document.createElement('input');
+    elemInput = createElm('input');
     mainDiv.appendChild(elemInput);
     elemInput.type = 'checkbox';
     elemInput.name = 'checkname';
-    elemInput.classList.add('checkboxs');
+    addClass(elemInput , 'checkboxs');
     elemInput.onclick = mycheck;
 
-    elemDiv_1 = document.createElement('div');//divの作成
+    elemDiv_1 = createElm('div');//divの作成
     mainDiv.appendChild(elemDiv_1 );
-    elemDiv_1.classList.add('display_text');//list Classの追加
+    addClass(elemDiv_1 , 'display_text');
     elemDiv_1.innerHTML = getText;
    
     //edit logo の作成
-    elemDiv_2 = document.createElement('div');//divの作成
+    elemDiv_2 = createElm('div');//divの作成
     mainDiv.appendChild(elemDiv_2);
-    elemDiv_2.classList.add('edit_logo');//list Classの追加
+    addClass(elemDiv_2 ,'edit_logo' );
     elemDiv_2.onclick = EditBtn ;
-    elemDiv_3 = document.createElement('div');//divの作成
+    elemDiv_3 = createElm('div');//divの作成
     elemDiv_2.appendChild(elemDiv_3);
-    elemDiv_3.classList.add('edit');//list Classの追加
-    elemDiv_3.classList.add('icon');//list Classの追加
+    addClass(elemDiv_3 , 'edit');
+    addClass(elemDiv_3 , 'icon');
 
     //delete logo の作成
-    elemDiv_4 = document.createElement('div');//divの作成
+    elemDiv_4 = createElm('div');//divの作成
     mainDiv.appendChild(elemDiv_4);
-    elemDiv_4.classList.add('delete_logo');//list Classの追加
+    addClass(elemDiv_4 , 'delete_logo');
     elemDiv_4.onclick = deleteList;
-    elemDiv_5 = document.createElement('div');//divの作成
+    elemDiv_5 = createElm('div');//divの作成
     elemDiv_4.appendChild(elemDiv_5);
-    elemDiv_5.classList.add('close');//list Classの追加
-    elemDiv_5.classList.add('icon');//list Classの追加
+    addClass(elemDiv_5 , 'close');
+    addClass(elemDiv_5 , 'icon');
     ListNumber +=1; 
     checkedNumber = checkedNumber;
     changeLength(checkedNumber , ListNumber);//ゲージ部分のテキストを変更
@@ -87,38 +100,36 @@ function createList(getText){
 
 
 
-
-
 // edit button を押した時の処理
 function EditBtn(e){
         let target = e.target;
         if(target.className == 'edit icon'){//edit logoの方をクリックされた時の処理
             let parent = target.parentElement;
             if(parent.previousElementSibling.className == 'display_text' ){
-                let editInput = document.createElement('input');
+                let editInput = createElm('input');
                 editInput.type = 'text';
-                editInput.classList.add('edit_text');
+                addClass(editInput , 'edit_text');
                 editInput.value = parent.previousElementSibling.textContent;
                 parent.previousElementSibling.replaceWith(editInput);
                 parent  = '';
             }else if(parent.previousElementSibling.className == 'edit_text'){
-                let editDiv = document.createElement('div');
-                editDiv.classList.add('display_text');
+                let editDiv = createElm('div');
+                addClass(editDiv , 'display_text');
                 editDiv.innerHTML = parent.previousElementSibling.value;
                 parent.previousElementSibling.replaceWith(editDiv);
                 parent  = '';
             }
         }else if(target.className == 'edit_logo'){//edit logo の外側のdivをクリックされた時
             if(target.previousElementSibling.className == 'display_text' ){
-                let editInput = document.createElement('input');
+                let editInput = createElm('input');
                 editInput.type = 'text';
-                editInput.classList.add('edit_text');
+                addClass(editInput , 'edit_text');
                 editInput.value = target.previousElementSibling.textContent;
                 target.previousElementSibling.replaceWith(editInput);
                 target = '';
             }else if(target.previousElementSibling.className == 'edit_text'){
-                let editDiv = document.createElement('div');
-                editDiv.classList.add('display_text');
+                let editDiv = createElm('div');
+                addClass(editDiv , 'display_text');
                 editDiv.innerHTML = target.previousElementSibling.value;
                 target.previousElementSibling.replaceWith(editDiv);
                 target = '';
