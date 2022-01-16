@@ -47,12 +47,12 @@ addBtn.addEventListener('click',function(){
     if(GetText == ''){
         inputedText.placeholder = 'Please enter the characters';
         inputedText.classList.remove('input_text');
-        inputedText.addClass('input_text_null');
+        addClass(inputedText ,'input_text_null');
     }else{
         createList(GetText);
         inputedText.placeholder = 'What needs to be done?';
         inputedText.classList.remove('input_text_null');
-        inputedText.addClass('input_text');
+        addClass(inputedText ,'input_text');
     }
 });
 
