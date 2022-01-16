@@ -121,6 +121,8 @@ ul,li{
     display: flex;
     align-items: center;
     text-decoration: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   /* 編集ロゴの作成 */
