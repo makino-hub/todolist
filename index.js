@@ -1,3 +1,24 @@
+var userAgent = window.navigator.userAgent.toLowerCase();
+    
+if(userAgent.indexOf('msie') != -1 || userAgent.indexOf('trident') != -1) {
+    //IE向けの記述
+    alert('We recommend opening it in Chrome.\nChromeで開けることを推奨しています。');
+}else if(userAgent.indexOf('edge') != -1) {
+    //旧Edge向けの記述
+    alert('We recommend opening it in Chrome.\nChromeで開けることを推奨しています。');
+}else if(userAgent.indexOf('chrome') != -1) {
+    //Google Chrome向けの記述
+}else if(userAgent.indexOf('safari') != -1) {
+    //Safari向けの記述
+    alert('We recommend opening it in Chrome.\nChromeで開けることを推奨しています。');
+}else if(userAgent.indexOf('firefox') != -1) {
+    //FireFox向けの記述
+    alert('We recommend opening it in Chrome.\nChromeで開けることを推奨しています。');
+}else{
+    //その他のブラウザ向けの記述
+    alert('We recommend opening it in Chrome.\nChromeで開けることを推奨しています。');
+}
+
 //要素の作成
 function createElm(getElm){
    let createElm =  document.createElement(getElm);
