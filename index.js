@@ -141,37 +141,48 @@ function createList(getText){
 // edit button を押した時の処理
 function EditBtn(e){
         let target = e.target;
+        let parent = target.parentElement;
         if(target.className == 'edit icon'){//edit logoの方をクリックされた時の処理
-            let parent = target.parentElement;
-            if(parent.previousElementSibling.className == 'display_text' ){
-                let editInput = createElm('input');
-                editInput.type = 'text';
-                addClass(editInput , 'edit_text');
-                editInput.value = parent.previousElementSibling.textContent;
-                parent.previousElementSibling.replaceWith(editInput);
-                parent  = '';
-            }else if(parent.previousElementSibling.className == 'edit_text'){
-                let editDiv = createElm('div');
-                addClass(editDiv , 'display_text');
-                editDiv.innerHTML = parent.previousElementSibling.value;
-                parent.previousElementSibling.replaceWith(editDiv);
-                parent  = '';
+            if(parent.previousElementSibling.style.textDecoration == 'line-through'){//文字に中心線が入っている場合、編集不可
+                return 0;
+                // console.log('error')
+            }else{
+                if(parent.previousElementSibling.className == 'display_text' ){
+                    let editInput = createElm('input');
+                    editInput.type = 'text';
+                    addClass(editInput , 'edit_text');
+                    editInput.value = parent.previousElementSibling.textContent;
+                    parent.previousElementSibling.replaceWith(editInput);
+                    parent  = '';
+                }else if(parent.previousElementSibling.className == 'edit_text'){
+                    let editDiv = createElm('div');
+                    addClass(editDiv , 'display_text');
+                    editDiv.innerHTML = parent.previousElementSibling.value;
+                    parent.previousElementSibling.replaceWith(editDiv);
+                    parent  = '';
+                }
             }
         }else if(target.className == 'edit_logo'){//edit logo の外側のdivをクリックされた時
-            if(target.previousElementSibling.className == 'display_text' ){
-                let editInput = createElm('input');
-                editInput.type = 'text';
-                addClass(editInput , 'edit_text');
-                editInput.value = target.previousElementSibling.textContent;
-                target.previousElementSibling.replaceWith(editInput);
-                target = '';
-            }else if(target.previousElementSibling.className == 'edit_text'){
-                let editDiv = createElm('div');
-                addClass(editDiv , 'display_text');
-                editDiv.innerHTML = target.previousElementSibling.value;
-                target.previousElementSibling.replaceWith(editDiv);
-                target = '';
+            if(target.previousElementSibling.style.textDecoration == 'line-through'){//文字に中心線が入っている場合、編集不可
+                return 0;
+                // console.log('error')
+            }else{
+                if(target.previousElementSibling.className == 'display_text' ){
+                    let editInput = createElm('input');
+                    editInput.type = 'text';
+                    addClass(editInput , 'edit_text');
+                    editInput.value = target.previousElementSibling.textContent;
+                    target.previousElementSibling.replaceWith(editInput);
+                    target = '';
+                }else if(target.previousElementSibling.className == 'edit_text'){
+                    let editDiv = createElm('div');
+                    addClass(editDiv , 'display_text');
+                    editDiv.innerHTML = target.previousElementSibling.value;
+                    target.previousElementSibling.replaceWith(editDiv);
+                    target = '';
+                }
             }
+
         }
         saveDate();//リストの保存データを更新
 }
@@ -204,17 +215,22 @@ let checkedNumber = 0;//チェックボックスでチェックした数
 
 function mycheck(e){
     let target = e.target;
-    if(target.checked){
-        target.nextElementSibling.style.textDecoration= 'line-through';
-        checkedNumber += 1;
-        ListNumber = ListNumber ;
-        changeLength(checkedNumber , ListNumber);
+    if(target.nextElementSibling.className === 'edit_text'){
+        target.checked = false;
     }else{
-        target.nextElementSibling.style.textDecoration= 'none';
-        checkedNumber -= 1;
-        ListNumber = ListNumber ;
-        changeLength(checkedNumber , ListNumber);
+        if(target.checked){
+            target.nextElementSibling.style.textDecoration= 'line-through';
+            checkedNumber += 1;
+            ListNumber = ListNumber ;
+            changeLength(checkedNumber , ListNumber);
+        }else{
+            target.nextElementSibling.style.textDecoration= 'none';
+            checkedNumber -= 1;
+            ListNumber = ListNumber ;
+            changeLength(checkedNumber , ListNumber);
+        }
     }
+
 };
 
 
@@ -290,3 +306,4 @@ if(todos){
     })
 }
 
+//バグ　⇨　チェックボックスの中にチェックが入っているときは編集禁止にする 
